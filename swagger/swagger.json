@@ -12,10 +12,7 @@
   },
   "host": "api.martos.fr",
   "basePath": "/",
-  "schemes": [
-    "https",
-    "http"
-  ],
+  "schemes": ["https", "http"],
   "tags": [
     {
       "name": "Live/articles",
@@ -53,9 +50,7 @@
   "paths": {
     "/admin/articles": {
       "get": {
-        "tags": [
-          "Admin/articles"
-        ],
+        "tags": ["Admin/articles"],
         "summary": "List all the article",
         "description": "List all the articles available, optionaly filtered for to match some specific types",
         "parameters": [
@@ -77,9 +72,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -95,9 +88,7 @@
     },
     "/admin/article": {
       "post": {
-        "tags": [
-          "Admin/articles"
-        ],
+        "tags": ["Admin/articles"],
         "summary": "Create article",
         "parameters": [
           {
@@ -116,9 +107,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -140,9 +129,7 @@
     },
     "/admin/article/{id}": {
       "get": {
-        "tags": [
-          "Admin/articles"
-        ],
+        "tags": ["Admin/articles"],
         "summary": "Access to the article",
         "parameters": [
           {
@@ -160,9 +147,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -179,9 +164,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Admin/articles"
-        ],
+        "tags": ["Admin/articles"],
         "summary": "Update the article",
         "parameters": [
           {
@@ -207,9 +190,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -231,9 +212,7 @@
     },
     "/admin/tags": {
       "get": {
-        "tags": [
-          "Admin/tags"
-        ],
+        "tags": ["Admin/tags"],
         "summary": "List all the tags",
         "description": "List all the tags available, optionaly filtered for to match some specific types",
         "parameters": [
@@ -255,9 +234,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -273,9 +250,7 @@
     },
     "/admin/adverts": {
       "get": {
-        "tags": [
-          "Admin/adverts"
-        ],
+        "tags": ["Admin/adverts"],
         "summary": "List all the adverts",
         "description": "List all the adverts available, optionaly filtered for to match some specific types",
         "parameters": [
@@ -297,9 +272,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -315,9 +288,7 @@
     },
     "/admin/advert/{id}": {
       "get": {
-        "tags": [
-          "Admin/adverts"
-        ],
+        "tags": ["Admin/adverts"],
         "summary": "Access to the advert",
         "parameters": [
           {
@@ -335,9 +306,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -354,9 +323,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Admin/adverts"
-        ],
+        "tags": ["Admin/adverts"],
         "summary": "Update the advert",
         "parameters": [
           {
@@ -382,9 +349,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -403,9 +368,7 @@
     },
     "/admin/advert": {
       "post": {
-        "tags": [
-          "Admin/adverts"
-        ],
+        "tags": ["Admin/adverts"],
         "summary": "Create the advert",
         "parameters": [
           {
@@ -424,9 +387,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -448,9 +409,7 @@
     },
     "/admin/sponsors": {
       "get": {
-        "tags": [
-          "Admin/sponsor"
-        ],
+        "tags": ["Admin/sponsor"],
         "summary": "List all the sponsors",
         "description": "List all the sponsors available",
         "parameters": [
@@ -462,9 +421,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -480,9 +437,7 @@
     },
     "/admin/sponsor/{id}": {
       "get": {
-        "tags": [
-          "Admin/sponsor"
-        ],
+        "tags": ["Admin/sponsor"],
         "summary": "List the sponsor",
         "parameters": [
           {
@@ -500,9 +455,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -519,9 +472,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Admin/sponsor"
-        ],
+        "tags": ["Admin/sponsor"],
         "summary": "Update the sponsor",
         "parameters": [
           {
@@ -547,9 +498,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -571,9 +520,7 @@
     },
     "/admin/sponsor": {
       "post": {
-        "tags": [
-          "Admin/sponsor"
-        ],
+        "tags": ["Admin/sponsor"],
         "summary": "Update the sponsor",
         "parameters": [
           {
@@ -584,9 +531,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -608,9 +553,7 @@
     },
     "/admin/users": {
       "get": {
-        "tags": [
-          "Admin/users"
-        ],
+        "tags": ["Admin/users"],
         "summary": "List all the 'admin' (Journaliste, Admin, FPE) users",
         "description": "Only Journaliste, Admin, FPE",
         "parameters": [
@@ -622,9 +565,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -640,9 +581,7 @@
     },
     "/live/article/{articleId}": {
       "get": {
-        "tags": [
-          "Live/articles"
-        ],
+        "tags": ["Live/articles"],
         "summary": "Get the full info of an article",
         "operationId": "article",
         "parameters": [
@@ -654,9 +593,7 @@
             "description": "identifier of the article to find"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -669,9 +606,7 @@
     },
     "/live/stream/{streamId}/adverts": {
       "get": {
-        "tags": [
-          "Live/adverts"
-        ],
+        "tags": ["Live/adverts"],
         "summary": "List all the adverts available",
         "description": "List all the adverts available for the current stream, optionaly filtered to match some specific types",
         "operationId": "adverts",
@@ -694,9 +629,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -712,10 +645,8 @@
     },
     "/account/register": {
       "post": {
-        "tags": [
-          "Account"
-        ],
-        "summary": "Register the user on La gazette",
+        "tags": ["Account"],
+        "summary": "Register the user on swagger",
         "operationId": "register",
         "parameters": [
           {
@@ -727,9 +658,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -748,10 +677,8 @@
     },
     "/account/login": {
       "post": {
-        "tags": [
-          "Account"
-        ],
-        "summary": "Log the user on La gazette",
+        "tags": ["Account"],
+        "summary": "Log the user on swagger",
         "operationId": "login",
         "parameters": [
           {
@@ -763,9 +690,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -784,9 +709,7 @@
     },
     "/account/profile": {
       "get": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Get the current user info",
         "operationId": "getuserProfile",
         "parameters": [
@@ -798,9 +721,7 @@
             "description": "Authentication token"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -817,9 +738,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Set the current user info",
         "operationId": "setUserProfile",
         "parameters": [
@@ -840,9 +759,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -864,9 +781,7 @@
     },
     "/account/resetPassword": {
       "post": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Ask the server to send a password reset email",
         "operationId": "resetPassword",
         "parameters": [
@@ -877,9 +792,7 @@
             "type": "string"
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -898,9 +811,7 @@
     },
     "/account/setPassword": {
       "post": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Set the given new password for the account",
         "operationId": "setPassword",
         "parameters": [
@@ -913,9 +824,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -934,9 +843,7 @@
     },
     "/account/validate": {
       "post": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Validate email address",
         "operationId": "validateEmail",
         "parameters": [
@@ -949,9 +856,7 @@
             }
           }
         ],
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -970,14 +875,10 @@
     },
     "/account/deleteAllAccountData": {
       "post": {
-        "tags": [
-          "Account"
-        ],
+        "tags": ["Account"],
         "summary": "Delete all the user account data",
         "operationId": "deleteAllAccountData",
-        "produces": [
-          "application/json"
-        ],
+        "produces": ["application/json"],
         "responses": {
           "200": {
             "description": "successful operation",
@@ -1003,7 +904,7 @@
       "properties": {
         "email": {
           "type": "string",
-          "example": "admin@lagazette.com"
+          "example": "admin@swagger.com"
         },
         "role": {
           "type": "object",
@@ -1083,7 +984,7 @@
           "properties": {
             "url": {
               "type": "string",
-              "example": "http://www.lagazettedemontpellier.fr/media/cache/resolve/bup_mobile_article/rc/c50T6Fbb/uploads/images/68/bup/66588_5d15d5a8c3ba3_banner-footer-casino-palavas.jpg?filters%5Brelative_resize%5D%5Bwiden%5D=505"
+              "example": "http://www.swagger.fr/media/cache/resolve/bup_mobile_article/rc/c50T6Fbb/uploads/images/68/bup/66588_5d15d5a8c3ba3_banner-footer-casino-palavas.jpg?filters%5Brelative_resize%5D%5Bwiden%5D=505"
             }
           }
         },
@@ -1110,7 +1011,7 @@
         },
         "logoUrl": {
           "type": "string",
-          "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+          "example": "http://www.swagger.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
         },
         "targetUrl": {
           "type": "string",
@@ -1138,7 +1039,7 @@
           "properties": {
             "url": {
               "type": "string",
-              "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+              "example": "http://www.swagger.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
             }
           }
         },
@@ -1193,7 +1094,7 @@
           "properties": {
             "url": {
               "type": "string",
-              "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+              "example": "http://www.swagger.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
             },
             "title": {
               "type": "string",
@@ -1244,7 +1145,7 @@
               },
               "url": {
                 "type": "string",
-                "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+                "example": "http://www.swagger.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
               },
               "copyright": {
                 "type": "string",
@@ -1301,10 +1202,7 @@
           "example": "kikouPw"
         }
       },
-      "required": [
-        "email",
-        "password"
-      ]
+      "required": ["email", "password"]
     },
     "validateEmail": {
       "properties": {
@@ -1317,10 +1215,7 @@
           "example": "kikouPw"
         }
       },
-      "required": [
-        "email",
-        "password"
-      ]
+      "required": ["email", "password"]
     },
     "credentials": {
       "type": "object",
@@ -1334,10 +1229,7 @@
           "example": "kikouPw"
         }
       },
-      "required": [
-        "email",
-        "password"
-      ]
+      "required": ["email", "password"]
     },
     "user": {
       "type": "object",
@@ -1373,10 +1265,7 @@
           "example": "zer456g1zr"
         }
       },
-      "required": [
-        "email",
-        "password"
-      ]
+      "required": ["email", "password"]
     },
     "userParam": {
       "type": "object",
@@ -1396,9 +1285,7 @@
           "$ref": "#/definitions/coordinates"
         }
       },
-      "required": [
-        "email"
-      ]
+      "required": ["email"]
     },
     "loginRes": {
       "type": "object",
@@ -1440,14 +1327,7 @@
           "example": 34000
         }
       },
-      "required": [
-        "name",
-        "surname",
-        "email",
-        "city",
-        "address",
-        "postalCode"
-      ]
+      "required": ["name", "surname", "email", "city", "address", "postalCode"]
     },
     "baseImage": {
       "type": "object",
@@ -1516,12 +1396,7 @@
           "$ref": "#/definitions/baseImage"
         }
       },
-      "required": [
-        "_id",
-        "title",
-        "slug",
-        "tags"
-      ]
+      "required": ["_id", "title", "slug", "tags"]
     },
     "article": {
       "allOf": [
@@ -1538,10 +1413,7 @@
               "$ref": "#/definitions/image"
             }
           },
-          "required": [
-            "htmlContent",
-            "mainImage"
-          ]
+          "required": ["htmlContent", "mainImage"]
         }
       ]
     },
@@ -1586,13 +1458,7 @@
           "example": "#333333"
         }
       },
-      "required": [
-        "_id",
-        "type",
-        "image",
-        "startDate",
-        "endDate"
-      ]
+      "required": ["_id", "type", "image", "startDate", "endDate"]
     },
     "liveTagInfo": {
       "type": "object",
@@ -1610,11 +1476,7 @@
           "example": "sport"
         }
       },
-      "required": [
-        "_id",
-        "name",
-        "slug"
-      ]
+      "required": ["_id", "name", "slug"]
     },
     "liveArticleContent": {
       "type": "object",
@@ -1630,10 +1492,7 @@
           }
         }
       },
-      "required": [
-        "publishDate",
-        "tags"
-      ]
+      "required": ["publishDate", "tags"]
     },
     "liveArticle": {
       "allOf": [
@@ -1658,10 +1517,7 @@
           "type": "object"
         }
       },
-      "required": [
-        "code",
-        "message"
-      ]
+      "required": ["code", "message"]
     }
   },
   "responses": {
