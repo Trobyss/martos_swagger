@@ -1,0 +1,1721 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the API description of the Martos Project for online newspaper",
+    "version": "1.0",
+    "title": "Swagger Martos",
+    "termsOfService": "http://swagger.io/terms/",
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "api.martos.fr",
+  "basePath": "/",
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "tags": [
+    {
+      "name": "Live/articles",
+      "description": "Endpoint used to display articles"
+    },
+    {
+      "name": "Live/adverts",
+      "description": "Endpoint used to display adverts"
+    },
+    {
+      "name": "Account",
+      "description": "Endpoint that provides information about the user"
+    },
+    {
+      "name": "Admin/articles",
+      "description": "Endpoint used for admin articles"
+    },
+    {
+      "name": "Admin/adverts",
+      "description": "Endpoint used for admin adverts"
+    },
+    {
+      "name": "Admin/tags",
+      "description": "Endpoint used for admin tags"
+    },
+    {
+      "name": "Admin/users",
+      "description": "Endpoint used for admin users"
+    },
+    {
+      "name": "Admin/sponsor",
+      "description": "Endpoint used for admin sponsors"
+    }
+  ],
+  "paths": {
+    "/admin/articles": {
+      "get": {
+        "tags": [
+          "Admin/articles"
+        ],
+        "summary": "List all the article",
+        "description": "List all the articles available, optionaly filtered for to match some specific types",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "filter",
+            "required": false,
+            "type": "array",
+            "description": "Optional Filter",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/admin_articles"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/article": {
+      "post": {
+        "tags": [
+          "Admin/articles"
+        ],
+        "summary": "Create article",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin_article"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/admin/article/{id}": {
+      "get": {
+        "tags": [
+          "Admin/articles"
+        ],
+        "summary": "Access to the article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the article to work on"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_article"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Admin/articles"
+        ],
+        "summary": "Update the article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the article to work on"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin_article"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/admin/tags": {
+      "get": {
+        "tags": [
+          "Admin/tags"
+        ],
+        "summary": "List all the tags",
+        "description": "List all the tags available, optionaly filtered for to match some specific types",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "filter",
+            "required": false,
+            "type": "array",
+            "description": "Optional Filter",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/admin_press_reviews"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/adverts": {
+      "get": {
+        "tags": [
+          "Admin/adverts"
+        ],
+        "summary": "List all the adverts",
+        "description": "List all the adverts available, optionaly filtered for to match some specific types",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "filte",
+            "required": false,
+            "type": "array",
+            "description": "Optional Filter",
+            "items": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/admin_adverts"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/advert/{id}": {
+      "get": {
+        "tags": [
+          "Admin/adverts"
+        ],
+        "summary": "Access to the advert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the advert to work on"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_advert"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Admin/adverts"
+        ],
+        "summary": "Update the advert",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the advert to work on"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin_advert"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_advert"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/admin/advert": {
+      "post": {
+        "tags": [
+          "Admin/adverts"
+        ],
+        "summary": "Create the advert",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin_advert"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_advert"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/admin/sponsors": {
+      "get": {
+        "tags": [
+          "Admin/sponsor"
+        ],
+        "summary": "List all the sponsors",
+        "description": "List all the sponsors available",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/admin_sponsors"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/sponsor/{id}": {
+      "get": {
+        "tags": [
+          "Admin/sponsor"
+        ],
+        "summary": "List the sponsor",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the advert to work on"
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_sponsors"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Admin/sponsor"
+        ],
+        "summary": "Update the sponsor",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "description": "Identifier of the advert to work on"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/admin_sponsors"
+            }
+          },
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_sponsors"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/admin/sponsor": {
+      "post": {
+        "tags": [
+          "Admin/sponsor"
+        ],
+        "summary": "Update the sponsor",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/admin_sponsors"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/admin/users": {
+      "get": {
+        "tags": [
+          "Admin/users"
+        ],
+        "summary": "List all the 'admin' (Journaliste, Admin, FPE) users",
+        "description": "Only Journaliste, Admin, FPE",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/admin_users"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/live/article/{articleId}": {
+      "get": {
+        "tags": [
+          "Live/articles"
+        ],
+        "summary": "Get the full info of an article",
+        "operationId": "article",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "articleId",
+            "required": true,
+            "type": "string",
+            "description": "identifier of the article to find"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/liveArticle"
+            }
+          }
+        }
+      }
+    },
+    "/live/stream/{streamId}/adverts": {
+      "get": {
+        "tags": [
+          "Live/adverts"
+        ],
+        "summary": "List all the adverts available",
+        "description": "List all the adverts available for the current stream, optionaly filtered to match some specific types",
+        "operationId": "adverts",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "streamId",
+            "required": true,
+            "type": "string",
+            "description": "identifier of the stream to work on"
+          },
+          {
+            "in": "query",
+            "name": "types",
+            "required": false,
+            "type": "array",
+            "description": "Optional list of accepted advert types",
+            "items": {
+              "type": "number"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/advert"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/account/register": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Register the user on La gazette",
+        "operationId": "register",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userRegisterParam"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/loginRes"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/AlreadyExists"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/login": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Log the user on La gazette",
+        "operationId": "login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/credentials"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/loginRes"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/InvalidCredentials"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/profile": {
+      "get": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Get the current user info",
+        "operationId": "getuserProfile",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "description": "Authentication token"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Set the current user info",
+        "operationId": "setUserProfile",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token",
+            "required": true,
+            "type": "string",
+            "format": "int32",
+            "description": "Authentication token"
+          },
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/userParam"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/user"
+            }
+          },
+          "401": {
+            "$ref": "#/responses/Unauthorized"
+          },
+          "404": {
+            "$ref": "#/responses/NotFound"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/resetPassword": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Ask the server to send a password reset email",
+        "operationId": "resetPassword",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "email",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/coordinates"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/InvalidCredentials"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/setPassword": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Set the given new password for the account",
+        "operationId": "setPassword",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setPasswordData"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/coordinates"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/InvalidCredentials"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/validate": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Validate email address",
+        "operationId": "validateEmail",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/validateEmail"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/coordinates"
+            }
+          },
+          "403": {
+            "$ref": "#/responses/InvalidCredentials"
+          },
+          "412": {
+            "$ref": "#/responses/PreconditionFailed"
+          }
+        }
+      }
+    },
+    "/account/deleteAllAccountData": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "summary": "Delete all the user account data",
+        "operationId": "deleteAllAccountData",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "deleted": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "403": {
+            "$ref": "#/responses/InvalidCredentials"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "admin_users": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "admin@lagazette.com"
+        },
+        "role": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Administrateur"
+            }
+          }
+        },
+        "validated": {
+          "type": "boolean",
+          "example": true
+        },
+        "locked": {
+          "type": "boolean",
+          "example": true
+        },
+        "created_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        }
+      }
+    },
+    "admin_adverts": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "autopub hebdo"
+        },
+        "type": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Desktop carre double"
+            }
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "endDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "published": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "admin_advert": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "autopub hebdo"
+        },
+        "url": {
+          "type": "string",
+          "example": "http://www.casinopalavas.com/evenements/details/7070/black-jack-electronique"
+        },
+        "type": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Desktop carre double"
+            }
+          }
+        },
+        "image": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "example": "http://www.lagazettedemontpellier.fr/media/cache/resolve/bup_mobile_article/rc/c50T6Fbb/uploads/images/68/bup/66588_5d15d5a8c3ba3_banner-footer-casino-palavas.jpg?filters%5Brelative_resize%5D%5Bwiden%5D=505"
+            }
+          }
+        },
+        "startDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "endDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "published": {
+          "type": "boolean",
+          "example": true
+        }
+      }
+    },
+    "admin_sponsors": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Nicolin"
+        },
+        "logoUrl": {
+          "type": "string",
+          "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+        },
+        "targetUrl": {
+          "type": "string",
+          "example": "  http://www.groupenicollin.com/"
+        }
+      }
+    },
+    "admin_articles": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Aéroport de montpellier"
+        },
+        "uptated_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "mainImage": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+            }
+          }
+        },
+        "published": {
+          "type": "boolean",
+          "example": true
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Camille"
+            },
+            "surname": {
+              "type": "string",
+              "example": "Vittet"
+            }
+          }
+        }
+      }
+    },
+    "admin_article": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Aéroport de montpellier"
+        },
+        "head": {
+          "type": "string",
+          "example": "Le Ministère de l'économie et des finances vient de valider le dossier montpelliérain déposé auprès du fonds de revitalisation du centre-ville."
+        },
+        "htmlContent": {
+          "type": "string",
+          "example": "300 000 € pour aider au financement de nouveaux projets pour redynamiser les commerces du centre de Montpellier. Le Ministère de l'économie et des finances vient de valider le dossier montpelliérain déposé auprès du fonds de revitalisation du centre-ville, qui vise à aider les communes ayant souffert des manifestations des gilets jaunes le samedi"
+        },
+        "author": {
+          "type": "string",
+          "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ"
+        },
+        "uptated_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "mainImage": {
+          "type": "object",
+          "properties": {
+            "url": {
+              "type": "string",
+              "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+            },
+            "title": {
+              "type": "string",
+              "example": "Ma superbe image"
+            },
+            "copyright": {
+              "type": "string",
+              "example": "Guillaume Bonnefont"
+            },
+            "legend": {
+              "type": "string",
+              "example": "Photo d'illustration"
+            }
+          }
+        },
+        "published": {
+          "type": "boolean",
+          "example": true
+        },
+        "publishDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "example": "Sport"
+              }
+            }
+          }
+        },
+        "medias": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "example": "file | image | oEmbed"
+              },
+              "titre": {
+                "type": "string",
+                "example": "illustration en chinoi"
+              },
+              "url": {
+                "type": "string",
+                "example": "http://www.lagazettedenimes.fr/media/cache/original/rc/eJlvRStL/uploads/images/49/sujet/48467_5d08d6ce82be6_nmes--huit-personnes-interpellees-pour-plus-de-80-cambriolages.jpg"
+              },
+              "copyright": {
+                "type": "string",
+                "example": "Jb"
+              }
+            }
+          }
+        }
+      }
+    },
+    "admin_press_reviews": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "example": "Aéroport de montpellier"
+        },
+        "uptated_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "created_at": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "published": {
+          "type": "boolean",
+          "example": true
+        },
+        "author": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Camille"
+            },
+            "surname": {
+              "type": "string",
+              "example": "Vittet"
+            }
+          }
+        }
+      }
+    },
+    "setPasswordData": {
+      "type": "object",
+      "properties": {
+        "resetKey": {
+          "type": "string",
+          "example": "zee6f555ze8fzef"
+        },
+        "newPassword": {
+          "type": "string",
+          "example": "kikouPw"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "validateEmail": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "validateToken": {
+          "type": "number",
+          "example": "kikouPw"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "credentials": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "password": {
+          "type": "number",
+          "example": "kikouPw"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "user": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "validated": {
+          "type": "boolean"
+        },
+        "birthdate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "billingCoordinate": {
+          "$ref": "#/definitions/coordinates"
+        },
+        "deliveryCoordinate": {
+          "$ref": "#/definitions/coordinates"
+        }
+      }
+    },
+    "userRegisterParam": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "zer456g1zr"
+        }
+      },
+      "required": [
+        "email",
+        "password"
+      ]
+    },
+    "userParam": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "birthdate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "billingCoordinate": {
+          "$ref": "#/definitions/coordinates"
+        },
+        "deliveryCoordinate": {
+          "$ref": "#/definitions/coordinates"
+        }
+      },
+      "required": [
+        "email"
+      ]
+    },
+    "loginRes": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkMTBlMjhiMWIzZGZjMDA2NmEzNmM2ZSIsImlhdCI6MTU2MTM5NzM1NywiZXhwIjoxNTYxNDgzNzU3fQ.1gMkzAi0YhuS56DuxsOKkBpuMru2XWpHPiUEntiuMKA"
+        },
+        "user": {
+          "$ref": "#/definitions/user"
+        }
+      }
+    },
+    "coordinates": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Dupond"
+        },
+        "surname": {
+          "type": "string",
+          "example": "Henri"
+        },
+        "email": {
+          "type": "string",
+          "example": "toto@tata.com"
+        },
+        "city": {
+          "type": "number",
+          "example": "Montpellier"
+        },
+        "address": {
+          "type": "string",
+          "example": "10 rue des oliviers"
+        },
+        "postalCode": {
+          "type": "number",
+          "example": 34000
+        }
+      },
+      "required": [
+        "name",
+        "surname",
+        "email",
+        "city",
+        "address",
+        "postalCode"
+      ]
+    },
+    "baseImage": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "type": "string",
+          "example": "68390_5d429b5916686_autopub-hebdo-3.jpg"
+        }
+      }
+    },
+    "image": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/baseImage"
+        },
+        {
+          "properties": {
+            "title": {
+              "type": "string",
+              "example": "Titre de la photo"
+            },
+            "copyright": {
+              "type": "string",
+              "example": "C. Henry"
+            },
+            "legend": {
+              "type": "string",
+              "example": "Buttin des cambrioleurs saisis par la police"
+            },
+            "filterName": {
+              "type": "string",
+              "example": "article_7"
+            },
+            "context": {
+              "type": "string",
+              "example": "sujet"
+            }
+          }
+        }
+      ]
+    },
+    "articleInfo": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "nms_sport_2566"
+        },
+        "title": {
+          "type": "string",
+          "example": "Un cambriolage a nimes"
+        },
+        "slug": {
+          "type": "string",
+          "example": "le-marche-des-abricots-2019.html"
+        },
+        "head": {
+          "type": "string",
+          "example": "Un article de folie blablabla."
+        },
+        "author": {
+          "type": "string",
+          "example": "M. Francis"
+        },
+        "mainImage": {
+          "$ref": "#/definitions/baseImage"
+        }
+      },
+      "required": [
+        "_id",
+        "title",
+        "slug",
+        "tags"
+      ]
+    },
+    "article": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/articleInfo"
+        },
+        {
+          "properties": {
+            "htmlContent": {
+              "type": "string",
+              "example": "<p>Un super content</p>"
+            },
+            "mainImage": {
+              "$ref": "#/definitions/image"
+            }
+          },
+          "required": [
+            "htmlContent",
+            "mainImage"
+          ]
+        }
+      ]
+    },
+    "advert": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "5d492fa8b9633b0491e9568e"
+        },
+        "type": {
+          "type": "number",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "autopub hebdo 2"
+        },
+        "image": {
+          "$ref": "#/definitions/baseImage"
+        },
+        "targetUrl": {
+          "type": "string",
+          "example": "https://www.printempsdescomediens.com"
+        },
+        "startDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "endDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "htmlContent": {
+          "type": "string"
+        },
+        "backgroundImage": {
+          "$ref": "#/definitions/baseImage"
+        },
+        "backgroudColor": {
+          "type": "string",
+          "example": "#333333"
+        }
+      },
+      "required": [
+        "_id",
+        "type",
+        "image",
+        "startDate",
+        "endDate"
+      ]
+    },
+    "liveTagInfo": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "example": "5d499d82ed3168004a134baf"
+        },
+        "name": {
+          "type": "string",
+          "example": "Sport"
+        },
+        "slug": {
+          "type": "string",
+          "example": "sport"
+        }
+      },
+      "required": [
+        "_id",
+        "name",
+        "slug"
+      ]
+    },
+    "liveArticleContent": {
+      "type": "object",
+      "properties": {
+        "publishDate": {
+          "type": "string",
+          "example": "1998-04-16T00:00:00.000Z"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/liveTagInfo"
+          }
+        }
+      },
+      "required": [
+        "publishDate",
+        "tags"
+      ]
+    },
+    "liveArticle": {
+      "allOf": [
+        {
+          "$ref": "#/definitions/article"
+        },
+        {
+          "$ref": "#/definitions/liveArticleContent"
+        }
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    }
+  },
+  "responses": {
+    "Unauthorized": {
+      "description": "Unauthorized. You need to be signed in to access this endpoint",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "PreconditionFailed": {
+      "description": "Invalid parameters",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "InternalError": {
+      "description": "Internal error",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "AlreadyExists": {
+      "description": "Forbidden. Another account already exists with the give email",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "InvalidCredentials": {
+      "description": "Forbidden. Email or password is invalid",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "Forbidden": {
+      "description": "Forbidden. You must subscribe to the parution or buy the paper to acces this content",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "AlreadyBought": {
+      "description": "Forbidden. You have already bought this paper or you have subscribed to the parution",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    },
+    "NotFound": {
+      "description": "The element was not found",
+      "schema": {
+        "$ref": "#/definitions/Error"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
